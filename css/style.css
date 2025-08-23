@@ -10054,7 +10054,7 @@ html.tablet .ui-to-top {
 .rd-navbar-fixed .rd-navbar-nav-wrap {
 	position: fixed;
 	left: 0;
-	top: -56px;
+	top: -34px;
 	bottom: -56px;
 	z-index: 1079;
 	width: 270px;
