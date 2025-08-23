@@ -1,0 +1,2466 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+  <head>
+    <title>Products</title>
+    <meta name="format-detection" content="telephone=no" />
+    <meta
+      name="viewport"
+      content="width=device-width height=device-height initial-scale=1.0 maximum-scale=1.0 user-scalable=0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta charset="utf-8" />
+    <link rel="icon" href="images/logo.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//fonts.googleapis.com/css?family=Work+Sans:300,400,500,700,800%7CPoppins:300,400,700"
+    />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+    <link rel="stylesheet" href="css/fonts.css" />
+    <link rel="stylesheet" href="css/style.css" id="main-styles-link" />
+    <style>
+      .thumbnail-light-image {
+        height: 200px;
+        object-fit: cover;
+        width: 100%;
+      }
+      .product-card {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        margin-bottom: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+        border-radius: 8px;
+        overflow: hidden;
+        background: #fff;
+      }
+      .product-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      }
+      .thumbnail-light-title {
+        margin-top: 15px;
+        font-size: 1rem;
+      }
+      .thumbnail-light-title a {
+        color: #333;
+        text-decoration: none;
+        font-weight: 500;
+      }
+      .thumbnail-light-title a:hover {
+        color: #007bff;
+      }
+      /* Mobile specific styles */
+      @media (max-width: 575.98px) {
+        .thumbnail-light-image {
+          height: 150px;
+        }
+        .thumbnail-light-title {
+          font-size: 0.9rem;
+          margin-top: 10px;
+        }
+      }
+      /* Tablet specific styles */
+      @media (min-width: 576px) and (max-width: 767.98px) {
+        .thumbnail-light-image {
+          height: 180px;
+        }
+      }
+      /* Small desktop styles */
+      @media (min-width: 768px) and (max-width: 991.98px) {
+        .thumbnail-light-image {
+          height: 190px;
+        }
+      }
+      .dimensions-list {
+        max-width: 100%;
+        width: 100%;
+        margin: 0 auto;
+        text-align: left;
+      }
+      .dimension-item {
+        border: 1px solid #eee;
+        border-radius: 6px;
+        margin-bottom: 12px;
+        overflow: hidden;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+        transition: box-shadow 0.2s;
+      }
+      .dimension-header {
+        cursor: pointer;
+        padding: 16px 20px;
+        font-size: 1.1em;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #f7f7f7;
+        font-weight: 500;
+        user-select: none;
+      }
+      .toggle-icon {
+        font-size: 1.3em;
+        transition: transform 0.2s;
+        display: inline-block;
+      }
+      /* .dimension-item.active .toggle-icon {
+        transform: rotate(180deg);
+      } */
+      .dimension-content {
+        max-height: 0;
+        overflow: hidden;
+        background: #fafbfc;
+        transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1), padding 0.4s;
+        padding: 0 20px;
+      }
+      .dimension-item.active .dimension-content {
+        max-height: 100%; /* Adjust as needed */
+        padding: 16px 20px;
+      }
+      .dimension-content table {
+        width: 100%;
+        min-width: 800px; /* Optional: set a minimum width if you want */
+      }
+
+      /* Responsive table styles */
+      .table-responsive {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        margin-bottom: 1rem;
+      }
+
+      .table-responsive table {
+        min-width: 800px;
+        margin-bottom: 0;
+      }
+
+      /* Mobile table optimizations */
+      @media (max-width: 767.98px) {
+        .dimension-content table {
+          font-size: 0.85rem;
+        }
+
+        .dimension-content table th,
+        .dimension-content table td {
+          padding: 0.5rem 0.25rem;
+        }
+
+        .dimension-content table th {
+          font-size: 0.8rem;
+          white-space: nowrap;
+        }
+      }
+
+      /* Small mobile devices */
+      @media (max-width: 575.98px) {
+        .dimension-content table {
+          font-size: 0.75rem;
+        }
+
+        .dimension-content table th,
+        .dimension-content table td {
+          padding: 0.25rem 0.15rem;
+        }
+
+        .dimension-content table th {
+          font-size: 0.7rem;
+        }
+
+        .table-responsive {
+          border-radius: 0.25rem;
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      /* Table scroll indicator */
+      .table-responsive::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        width: 30px;
+        background: linear-gradient(
+          to right,
+          transparent,
+          rgba(255, 255, 255, 0.8)
+        );
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 0.3s;
+      }
+
+      .table-responsive:hover::after {
+        opacity: 1;
+      }
+
+      /* Improve table readability */
+      .table-responsive table {
+        border-collapse: collapse;
+      }
+
+      .table-responsive table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      .table-responsive table td {
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      .table-responsive table tbody tr:hover {
+        background-color: #f8f9fa;
+      }
+      .table_heading {
+        margin-bottom: 24px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="preloader">
+      <div class="preloader-logo">
+        <img
+          src="images/logo.png"
+          alt="Logo"
+          width="151"
+          height="44"
+          srcset="images/logo.png 2x"
+        />
+        <div style="margin-bottom: -28px">
+          <h3>Purusharth</h3>
+        </div>
+      </div>
+      <div class="preloader-body">
+        <div id="loadingProgressG">
+          <div class="loadingProgressG" id="loadingProgressG_1"></div>
+        </div>
+        <div class="preloader-footer">
+          <h3>Engineering</h3>
+        </div>
+      </div>
+    </div>
+    <div class="page">
+      <!-- Page Header-->
+      <header class="section novi-background page-header">
+        <!-- RD Navbar-->
+        <div class="rd-navbar-wrap">
+          <nav
+            class="rd-navbar rd-navbar-corporate"
+            data-layout="rd-navbar-fixed"
+            data-sm-layout="rd-navbar-fixed"
+            data-md-layout="rd-navbar-fixed"
+            data-md-device-layout="rd-navbar-fixed"
+            data-lg-layout="rd-navbar-static"
+            data-lg-device-layout="rd-navbar-static"
+            data-lg-stick-up="true"
+            data-lg-stick-up-offset="118px"
+            data-xl-layout="rd-navbar-static"
+            data-xl-device-layout="rd-navbar-static"
+            data-xl-stick-up="true"
+            data-xl-stick-up-offset="118px"
+            data-xxl-layout="rd-navbar-static"
+            data-xxl-device-layout="rd-navbar-static"
+            data-xxl-stick-up-offset="118px"
+            data-xxl-stick-up="true"
+          >
+            <div class="rd-navbar-aside-outer">
+              <div class="rd-navbar-aside" style="padding: 10px 0 10px">
+                <!-- RD Navbar Panel-->
+                <div class="rd-navbar-panel">
+                  <!-- RD Navbar Toggle-->
+                  <button
+                    class="rd-navbar-toggle"
+                    data-rd-navbar-toggle="#rd-navbar-nav-wrap-1"
+                  >
+                    <span></span>
+                  </button>
+                  <!-- RD Navbar Brand--><a
+                    class="rd-navbar-brand"
+                    href="index.html"
+                    ><img
+                      src="images/logo.png"
+                      alt=""
+                      class="w-75 h-50"
+                      srcset="images/logo.png 2x"
+                  /></a>
+                </div>
+                <div class="rd-navbar-collapse">
+                  <button
+                    class="rd-navbar-collapse-toggle rd-navbar-fixed-element-1"
+                    data-rd-navbar-toggle="#rd-navbar-collapse-content-1"
+                  >
+                    <span></span>
+                  </button>
+                  <div
+                    class="rd-navbar-collapse-content"
+                    id="rd-navbar-collapse-content-1"
+                  >
+                    <article class="unit align-items-center">
+                      <div class="unit-left">
+                        <span
+                          class="icon novi-icon icon-md icon-modern mdi mdi-phone"
+                        ></span>
+                      </div>
+                      <div class="unit-body">
+                        <ul class="list-0">
+                          <li>
+                            <a class="link-default" href="tel:#"
+                              >+91-98241-23815</a
+                            >
+                          </li>
+                          <li>
+                            <a class="link-default" href="tel:#"
+                              >+91-88665-58695</a
+                            >
+                          </li>
+                        </ul>
+                      </div>
+                    </article>
+                    <article class="unit align-items-center">
+                      <div class="unit-left">
+                        <span
+                          class="icon novi-icon icon-md icon-modern mdi mdi-map-marker"
+                        ></span>
+                      </div>
+                      <div class="unit-body">
+                        <a class="link-default" href="tel:#"
+                          >1/A, 14, NR. S.T workshop, Chitra GIDC,<br />
+                          Bhavnagar, Gujarat 364004</a
+                        >
+                      </div>
+                    </article>
+                    <a
+                      class="button button-gray-bordered button-winona"
+                      href="#"
+                      >Request a call</a
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="rd-navbar-main-outer">
+              <div class="rd-navbar-main">
+                <div class="rd-navbar-nav-wrap" id="rd-navbar-nav-wrap-1">
+                  <!-- RD Navbar Nav-->
+                  <ul class="rd-navbar-nav">
+                    <li class="rd-nav-item">
+                      <a class="rd-nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="rd-nav-item">
+                      <a class="rd-nav-link" href="about-us.html">About us</a>
+                    </li>
+                    <li class="rd-nav-item active">
+                      <a class="rd-nav-link" href="products.html">Products</a>
+                    </li>
+                    <li class="rd-nav-item">
+                      <a class="rd-nav-link" href="contacts.html">Contacts</a>
+                    </li>
+                    <li class="rd-nav-item">
+                      <a class="rd-nav-link" href="workshop.html">Workshop</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </nav>
+        </div>
+      </header>
+      <!-- Breadcrumbs -->
+      <section
+        class="section novi-background breadcrumbs-custom bg-image context-dark"
+        style="background-image: url(images/product_bread_crumb.png)"
+      >
+        <div class="breadcrumbs-custom-inner">
+          <div class="container breadcrumbs-custom-container">
+            <div class="breadcrumbs-custom-main">
+              <h6 class="breadcrumbs-custom-subtitle title-decorated">
+                Our Products
+              </h6>
+              <h2 class="text-uppercase breadcrumbs-custom-title">
+                MS Flanges
+              </h2>
+            </div>
+            <ul class="breadcrumbs-custom-path">
+              <li><a href="index.html">Home</a></li>
+              <li class="active">Products</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Product Categories Section -->
+      <section class="section novi-background section-lg text-center">
+        <div class="container">
+          <h3 class="text-uppercase wow-outer">
+            <span class="wow slideInUp">Our Flange Product Categories</span>
+          </h3>
+          <p class="wow-outer">
+            <span class="text-width-1 wow slideInDown"
+              >At Purusharth Engineering, we manufacture and supply a
+              comprehensive range of MS flanges for various industrial
+              applications. Our products are CNC finished and auto-drilled for
+              precision and reliability.</span
+            >
+          </p>
+          <div
+            class="row row-35 row-xxl-70 offset-top-2 justify-content-center"
+          >
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <!-- Product 1 -->
+              <article class="thumbnail-light product-card">
+                <a class="thumbnail-light-media" href="#slip-on-section"
+                  ><img
+                    class="thumbnail-light-image"
+                    src="images/p1.JPG"
+                    alt="Slip-On Flanges"
+                    width="270"
+                    height="300"
+                /></a>
+                <h4 class="thumbnail-light-title">
+                  <a href="#slip-on-section">Slip-On</a>
+                </h4>
+              </article>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <!-- Product 2 -->
+              <article class="thumbnail-light product-card">
+                <a class="thumbnail-light-media" href="#blind-section"
+                  ><img
+                    class="thumbnail-light-image"
+                    src="images/p2.png"
+                    alt="Blind Flanges"
+                    width="270"
+                    height="300"
+                /></a>
+                <h4 class="thumbnail-light-title">
+                  <a href="#blind-section">Blind</a>
+                </h4>
+              </article>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <!-- Product 3 -->
+              <article class="thumbnail-light product-card">
+                <a class="thumbnail-light-media" href="#bend-section"
+                  ><img
+                    class="thumbnail-light-image"
+                    src="images/p3.jpg"
+                    alt="Bend Spooling"
+                    width="270"
+                    height="300"
+                /></a>
+                <h4 class="thumbnail-light-title">
+                  <a href="#bend-section">Bend spooling</a>
+                </h4>
+              </article>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <!-- Product 4 -->
+              <article class="thumbnail-light product-card">
+                <a class="thumbnail-light-media" href="#threaded-section"
+                  ><img
+                    class="thumbnail-light-image"
+                    src="images/p4.jpg"
+                    alt="Threaded Flanges"
+                    width="270"
+                    height="300"
+                /></a>
+                <h4 class="thumbnail-light-title">
+                  <a href="#threaded-section">Threaded</a>
+                </h4>
+              </article>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+              <!-- Product 5 -->
+              <article class="thumbnail-light product-card">
+                <a class="thumbnail-light-media" href="#multi-pcd-section">
+                  <img
+                    class="thumbnail-light-image"
+                    src="images/p5.JPG"
+                    alt="Multi PCD Flanges"
+                    width="270"
+                    height="300"
+                  />
+                </a>
+                <h4 class="thumbnail-light-title">
+                  <a href="#multi-pcd-section">Multi PCD</a>
+                </h4>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Slip-On Flanges Section -->
+      <section
+        id="slip-on-section"
+        class="section novi-background section-lg bg-gray-100"
+      >
+        <div class="container">
+          <div
+            class="row row-50 justify-content-center justify-content-lg-between"
+          >
+            <div class="col-md-10 col-lg-6 col-xl-5">
+              <h3 class="text-uppercase">Slip-On Flanges</h3>
+              <p class="about-subtitle">
+                High-quality MS slip-on flanges designed for easy installation
+                and reliable performance.
+              </p>
+              <p>
+                Our slip-on flanges feature a smooth bore that allows the pipe
+                to slide through the flange. They are welded both inside and
+                outside to provide sufficient strength and prevent leakage.
+                Perfect for low-pressure applications and easy maintenance.
+              </p>
+              <ul class="list-marked">
+                <li>Easy installation and alignment</li>
+                <li>Cost-effective solution</li>
+                <li>Available in various sizes</li>
+                <li>CNC finished for precision</li>
+                <li>Auto-drilled bolt holes</li>
+              </ul>
+              <a
+                class="button button-lg button-primary button-winona"
+                href="contacts.html"
+                >Get Quote</a
+              >
+            </div>
+            <div class="col-md-10 col-lg-6 col-xl-6">
+              <img
+                class="img-responsive"
+                src="images/p1.JPG"
+                alt="Slip-On Flanges"
+                width="570"
+                height="388"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Blind Flanges Section -->
+      <section id="blind-section" class="section novi-background section-lg">
+        <div class="container">
+          <div
+            class="row row-50 justify-content-center justify-content-lg-between flex-lg-row-reverse"
+          >
+            <div class="col-md-10 col-lg-6 col-xl-5">
+              <h3 class="text-uppercase">Blind Flanges</h3>
+              <p class="about-subtitle">
+                Reliable MS blind flanges for sealing pipe ends and pressure
+                testing applications.
+              </p>
+              <p>
+                Blind flanges are solid discs used to seal off the ends of
+                piping systems and pressure vessel openings. They are commonly
+                used for pressure testing and when future expansion is planned.
+                Our blind flanges are manufactured to exact specifications.
+              </p>
+              <ul class="list-marked">
+                <li>Excellent sealing capability</li>
+                <li>High pressure resistance</li>
+                <li>Easy to install and remove</li>
+                <li>Available in all standard sizes</li>
+                <li>Precision CNC machining</li>
+              </ul>
+              <a
+                class="button button-lg button-primary button-winona"
+                href="contacts.html"
+                >Get Quote</a
+              >
+            </div>
+            <div class="col-md-10 col-lg-6 col-xl-6">
+              <img
+                class="img-responsive"
+                src="images/p2.png"
+                alt="Blind Flanges"
+                width="570"
+                height="388"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Bend Spooling Section -->
+      <section
+        id="bend-section"
+        class="section novi-background section-lg bg-gray-100"
+      >
+        <div class="container">
+          <div
+            class="row row-50 justify-content-center justify-content-lg-between"
+          >
+            <div class="col-md-10 col-lg-6 col-xl-5">
+              <h3 class="text-uppercase">Bend Spooling</h3>
+              <p class="about-subtitle">
+                Custom pipe bending and spooling solutions for complex piping
+                systems.
+              </p>
+              <p>
+                Our bend spooling services provide custom pipe bending solutions
+                for industrial applications. We use advanced machinery to create
+                precise bends while maintaining the structural integrity of the
+                pipes. Perfect for complex piping layouts.
+              </p>
+              <ul class="list-marked">
+                <li>Custom bending solutions</li>
+                <li>Precise angle control</li>
+                <li>Maintains pipe integrity</li>
+                <li>Reduces welding joints</li>
+                <li>Cost-effective installation</li>
+              </ul>
+              <a
+                class="button button-lg button-primary button-winona"
+                href="contacts.html"
+                >Get Quote</a
+              >
+            </div>
+            <div class="col-md-10 col-lg-6 col-xl-6">
+              <img
+                class="img-responsive"
+                src="images/p3.jpg"
+                alt="Bend Spooling"
+                width="570"
+                height="388"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Threaded Flanges Section -->
+      <section id="threaded-section" class="section novi-background section-lg">
+        <div class="container">
+          <div
+            class="row row-50 justify-content-center justify-content-lg-between flex-lg-row-reverse"
+          >
+            <div class="col-md-10 col-lg-6 col-xl-5">
+              <h3 class="text-uppercase">Threaded Flanges</h3>
+              <p class="about-subtitle">
+                MS threaded flanges for easy assembly and disassembly without
+                welding.
+              </p>
+              <p>
+                Threaded flanges are designed with internal threads that match
+                the external threads on the pipe. This allows for easy assembly
+                and disassembly without welding, making them ideal for
+                maintenance and repair applications.
+              </p>
+              <ul class="list-marked">
+                <li>No welding required</li>
+                <li>Easy assembly/disassembly</li>
+                <li>Ideal for maintenance</li>
+                <li>Available in various thread sizes</li>
+                <li>High-quality threading</li>
+              </ul>
+              <a
+                class="button button-lg button-primary button-winona"
+                href="contacts.html"
+                >Get Quote</a
+              >
+            </div>
+            <div class="col-md-10 col-lg-6 col-xl-6">
+              <img
+                class="img-responsive"
+                src="images/p4.jpg"
+                alt="Threaded Flanges"
+                width="570"
+                height="388"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Multi PCD Flanges Section -->
+      <section
+        id="multi-pcd-section"
+        class="section novi-background section-lg bg-gray-100"
+      >
+        <div class="container">
+          <div
+            class="row row-50 justify-content-center justify-content-lg-between"
+          >
+            <div class="col-md-10 col-lg-6 col-xl-5">
+              <h3 class="text-uppercase">Multi PCD Flanges</h3>
+              <p class="about-subtitle">
+                Versatile MS flanges with multiple Pitch Circle Diameters (PCD)
+                for flexible installation.
+              </p>
+              <p>
+                Multi PCD flanges are designed to accommodate various bolt
+                patterns, making them ideal for applications where compatibility
+                with different standards is required. These flanges offer
+                flexibility and ease of use in diverse piping systems.
+              </p>
+              <ul class="list-marked">
+                <li>Multiple bolt patterns for universal fit</li>
+                <li>Reduces inventory requirements</li>
+                <li>Precision CNC manufactured</li>
+                <li>Available in a range of sizes</li>
+                <li>Durable and reliable construction</li>
+              </ul>
+              <a
+                class="button button-lg button-primary button-winona"
+                href="contacts.html"
+                >Get Quote</a
+              >
+            </div>
+            <div class="col-md-10 col-lg-6 col-xl-6">
+              <img
+                class="img-responsive"
+                src="images/p5.JPG"
+                alt="Multi PCD Flanges"
+                width="570"
+                height="388"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="section novi-background section-lg text-center"
+        id="dimensions-section"
+      >
+        <div class="container">
+          <h3 class="text-uppercase table_heading">Dimensions Tables</h3>
+          <div class="dimensions-list">
+            <!-- Example item -->
+            <!-- class tables 150 to 900 -->
+            <div class="dimension-item">
+              <div class="dimension-header">
+                <span>Class 150</span>
+                <span class="toggle-icon">▼</span>
+              </div>
+              <div class="dimension-content">
+                <div class="table-responsive">
+                  <table
+                    class="table table-bordered table-striped"
+                    style="background: #fff"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Size (NB)</th>
+                        <th>OD of Flange (mm)</th>
+                        <th>Thickness (mm)</th>
+                        <th>Diameter of Bore (mm)</th>
+                        <th>No. of Holes</th>
+                        <th>Diameter of Bolt (mm)</th>
+                        <th>PCD (mm)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>15NB</td>
+                        <td>88.9</td>
+                        <td>11.1</td>
+                        <td>22.40</td>
+                        <td>4</td>
+                        <td>12.7</td>
+                        <td>60.3</td>
+                      </tr>
+                      <tr>
+                        <td>20NB</td>
+                        <td>98.4</td>
+                        <td>12.7</td>
+                        <td>27.70</td>
+                        <td>4</td>
+                        <td>12.7</td>
+                        <td>69.9</td>
+                      </tr>
+                      <tr>
+                        <td>25NB</td>
+                        <td>108.0</td>
+                        <td>14.3</td>
+                        <td>34.50</td>
+                        <td>4</td>
+                        <td>12.7</td>
+                        <td>79.4</td>
+                      </tr>
+                      <tr>
+                        <td>32NB</td>
+                        <td>117.5</td>
+                        <td>15.9</td>
+                        <td>43.20</td>
+                        <td>4</td>
+                        <td>12.7</td>
+                        <td>88.9</td>
+                      </tr>
+                      <tr>
+                        <td>40NB</td>
+                        <td>127.0</td>
+                        <td>17.5</td>
+                        <td>49.50</td>
+                        <td>4</td>
+                        <td>12.7</td>
+                        <td>98.4</td>
+                      </tr>
+                      <tr>
+                        <td>50NB</td>
+                        <td>152.4</td>
+                        <td>19.1</td>
+                        <td>62</td>
+                        <td>4</td>
+                        <td>15.9</td>
+                        <td>120.7</td>
+                      </tr>
+                      <tr>
+                        <td>65NB</td>
+                        <td>177.8</td>
+                        <td>22.2</td>
+                        <td>74.70</td>
+                        <td>4</td>
+                        <td>15.9</td>
+                        <td>139.7</td>
+                      </tr>
+                      <tr>
+                        <td>80NB</td>
+                        <td>190.5</td>
+                        <td>23.8</td>
+                        <td>90.70</td>
+                        <td>4</td>
+                        <td>15.9</td>
+                        <td>152.4</td>
+                      </tr>
+                      <tr>
+                        <td>100NB</td>
+                        <td>228.6</td>
+                        <td>23.8</td>
+                        <td>116.10</td>
+                        <td>8</td>
+                        <td>15.9</td>
+                        <td>190.5</td>
+                      </tr>
+                      <tr>
+                        <td>125NB</td>
+                        <td>254.0</td>
+                        <td>23.8</td>
+                        <td>143.80</td>
+                        <td>8</td>
+                        <td>19.1</td>
+                        <td>215.9</td>
+                      </tr>
+                      <tr>
+                        <td>150NB</td>
+                        <td>279.4</td>
+                        <td>25.4</td>
+                        <td>170.70</td>
+                        <td>8</td>
+                        <td>19.1</td>
+                        <td>241.3</td>
+                      </tr>
+                      <tr>
+                        <td>200NB</td>
+                        <td>342.9</td>
+                        <td>28.6</td>
+                        <td>221.50</td>
+                        <td>8</td>
+                        <td>19.1</td>
+                        <td>298.5</td>
+                      </tr>
+                      <tr>
+                        <td>250NB</td>
+                        <td>406.4</td>
+                        <td>30.2</td>
+                        <td>276.40</td>
+                        <td>12</td>
+                        <td>22.2</td>
+                        <td>362.0</td>
+                      </tr>
+                      <tr>
+                        <td>300NB</td>
+                        <td>482.6</td>
+                        <td>31.8</td>
+                        <td>327.20</td>
+                        <td>12</td>
+                        <td>22.2</td>
+                        <td>431.8</td>
+                      </tr>
+                      <tr>
+                        <td>350NB</td>
+                        <td>533.4</td>
+                        <td>34.9</td>
+                        <td>349.20</td>
+                        <td>12</td>
+                        <td>25.4</td>
+                        <td>476.3</td>
+                      </tr>
+                      <tr>
+                        <td>400NB</td>
+                        <td>596.9</td>
+                        <td>36.5</td>
+                        <td>410.50</td>
+                        <td>16</td>
+                        <td>25.4</td>
+                        <td>539.8</td>
+                      </tr>
+                      <tr>
+                        <td>450NB</td>
+                        <td>635.0</td>
+                        <td>39.7</td>
+                        <td>461.80</td>
+                        <td>16</td>
+                        <td>28.6</td>
+                        <td>577.9</td>
+                      </tr>
+                      <tr>
+                        <td>500NB</td>
+                        <td>698.5</td>
+                        <td>42.9</td>
+                        <td>513.10</td>
+                        <td>20</td>
+                        <td>28.6</td>
+                        <td>635.0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="dimension-item">
+              <div class="dimension-header">
+                <span>Class 300</span>
+                <span class="toggle-icon">▼</span>
+              </div>
+              <div class="dimension-content">
+                <div>
+                  <table
+                    class="table table-bordered table-striped"
+                    style="background: #fff"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Size (NB)</th>
+                        <th>OD of Flange (mm)</th>
+                        <th>Thickness (mm)</th>
+                        <th>Diameter of Bore (mm)</th>
+                        <th>No. of Holes</th>
+                        <th>Diameter of Bolt (mm)</th>
+                        <th>PCD (mm)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>15NB</td>
+                        <td>95.3</td>
+                        <td>14.3</td>
+                        <td>22.40</td>
+                        <td>4</td>
+                        <td>12.7</td>
+                        <td>66.7</td>
+                      </tr>
+                      <tr>
+                        <td>20NB</td>
+                        <td>117.5</td>
+                        <td>15.9</td>
+                        <td>27.70</td>
+                        <td>4</td>
+                        <td>15.9</td>
+                        <td>82.6</td>
+                      </tr>
+                      <tr>
+                        <td>25NB</td>
+                        <td>123.8</td>
+                        <td>17.5</td>
+                        <td>34.50</td>
+                        <td>4</td>
+                        <td>15.9</td>
+                        <td>88.9</td>
+                      </tr>
+                      <tr>
+                        <td>32NB</td>
+                        <td>133.4</td>
+                        <td>19.1</td>
+                        <td>43.20</td>
+                        <td>4</td>
+                        <td>15.9</td>
+                        <td>98.4</td>
+                      </tr>
+                      <tr>
+                        <td>40NB</td>
+                        <td>155.6</td>
+                        <td>20.6</td>
+                        <td>49.50</td>
+                        <td>4</td>
+                        <td>19.1</td>
+                        <td>114.3</td>
+                      </tr>
+                      <tr>
+                        <td>50NB</td>
+                        <td>165.1</td>
+                        <td>22.2</td>
+                        <td>62.00</td>
+                        <td>8</td>
+                        <td>15.9</td>
+                        <td>127.0</td>
+                      </tr>
+                      <tr>
+                        <td>65NB</td>
+                        <td>190.5</td>
+                        <td>25.4</td>
+                        <td>74.70</td>
+                        <td>8</td>
+                        <td>19.1</td>
+                        <td>149.2</td>
+                      </tr>
+                      <tr>
+                        <td>80NB</td>
+                        <td>209.6</td>
+                        <td>28.6</td>
+                        <td>90.70</td>
+                        <td>8</td>
+                        <td>19.1</td>
+                        <td>168.3</td>
+                      </tr>
+                      <tr>
+                        <td>100NB</td>
+                        <td>254.0</td>
+                        <td>31.8</td>
+                        <td>116.10</td>
+                        <td>8</td>
+                        <td>19.1</td>
+                        <td>200.0</td>
+                      </tr>
+                      <tr>
+                        <td>125NB</td>
+                        <td>279.4</td>
+                        <td>34.9</td>
+                        <td>143.80</td>
+                        <td>8</td>
+                        <td>19.1</td>
+                        <td>235.0</td>
+                      </tr>
+                      <tr>
+                        <td>150NB</td>
+                        <td>317.5</td>
+                        <td>36.5</td>
+                        <td>170.70</td>
+                        <td>12</td>
+                        <td>19.1</td>
+                        <td>269.9</td>
+                      </tr>
+                      <tr>
+                        <td>200NB</td>
+                        <td>381.0</td>
+                        <td>41.3</td>
+                        <td>221.50</td>
+                        <td>12</td>
+                        <td>22.2</td>
+                        <td>330.2</td>
+                      </tr>
+                      <tr>
+                        <td>250NB</td>
+                        <td>444.5</td>
+                        <td>47.6</td>
+                        <td>276.40</td>
+                        <td>16</td>
+                        <td>25.4</td>
+                        <td>387.4</td>
+                      </tr>
+                      <tr>
+                        <td>300NB</td>
+                        <td>520.7</td>
+                        <td>50.8</td>
+                        <td>327.20</td>
+                        <td>16</td>
+                        <td>28.6</td>
+                        <td>450.9</td>
+                      </tr>
+                      <tr>
+                        <td>350NB</td>
+                        <td>584.2</td>
+                        <td>54.0</td>
+                        <td>359.20</td>
+                        <td>20</td>
+                        <td>28.6</td>
+                        <td>514.4</td>
+                      </tr>
+                      <tr>
+                        <td>400NB</td>
+                        <td>647.7</td>
+                        <td>57.2</td>
+                        <td>410.50</td>
+                        <td>20</td>
+                        <td>31.8</td>
+                        <td>571.5</td>
+                      </tr>
+                      <tr>
+                        <td>450NB</td>
+                        <td>711.2</td>
+                        <td>60.3</td>
+                        <td>461.80</td>
+                        <td>24</td>
+                        <td>31.8</td>
+                        <td>628.7</td>
+                      </tr>
+                      <tr>
+                        <td>500NB</td>
+                        <td>774.7</td>
+                        <td>63.5</td>
+                        <td>513.10</td>
+                        <td>24</td>
+                        <td>31.8</td>
+                        <td>685.8</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="dimension-item">
+              <div class="dimension-header">
+                <span>Class 600</span>
+                <span class="toggle-icon">▼</span>
+              </div>
+              <div class="dimension-content">
+                <div>
+                  <table
+                    class="table table-bordered table-striped"
+                    style="background: #fff"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Size (NB)</th>
+                        <th>OD of Flange (mm)</th>
+                        <th>Thickness (mm)</th>
+                        <th>Diameter of Bore (mm)</th>
+                        <th>No. of Holes</th>
+                        <th>Diameter of Bolt (mm)</th>
+                        <th>PCD (mm)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>15NB</td>
+                        <td>273.1</td>
+                        <td>44.4</td>
+                        <td>157.2</td>
+                        <td>8</td>
+                        <td>25.4</td>
+                        <td>215.9</td>
+                      </tr>
+                      <tr>
+                        <td>50NB</td>
+                        <td>508.0</td>
+                        <td>69.8</td>
+                        <td>323.8</td>
+                        <td>16</td>
+                        <td>34.9</td>
+                        <td>431.8</td>
+                      </tr>
+                      <tr>
+                        <td>65NB</td>
+                        <td>559.0*</td>
+                        <td>73.0</td>
+                        <td>381.0</td>
+                        <td>20</td>
+                        <td>34.9</td>
+                        <td>488.9</td>
+                      </tr>
+                      <tr>
+                        <td>150NB</td>
+                        <td>355.6</td>
+                        <td>53.9</td>
+                        <td>215.9</td>
+                        <td>12</td>
+                        <td>28.6</td>
+                        <td>292.1</td>
+                      </tr>
+                      <tr>
+                        <td>200NB</td>
+                        <td>419.1</td>
+                        <td>49.5</td>
+                        <td>269.9</td>
+                        <td>12</td>
+                        <td>31.7</td>
+                        <td>349.2</td>
+                      </tr>
+                      <tr>
+                        <td>300NB</td>
+                        <td>603.2</td>
+                        <td>76.2</td>
+                        <td>412.0</td>
+                        <td>20</td>
+                        <td>38.1</td>
+                        <td>527.0</td>
+                      </tr>
+                      <tr>
+                        <td>400NB</td>
+                        <td>685.8</td>
+                        <td>82.5</td>
+                        <td>469.9</td>
+                        <td>20</td>
+                        <td>41.3</td>
+                        <td>603.2</td>
+                      </tr>
+                      <tr>
+                        <td>600NB</td>
+                        <td>742.9</td>
+                        <td>88.9</td>
+                        <td>533.4</td>
+                        <td>20</td>
+                        <td>44.4</td>
+                        <td>654.0</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="dimension-item">
+              <div class="dimension-header">
+                <span>Class 900</span>
+                <span class="toggle-icon">▼</span>
+              </div>
+              <div class="dimension-content">
+                <div>
+                  <table
+                    class="table table-bordered table-striped"
+                    style="background: #fff"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Size (NB)</th>
+                        <th>OD of Flange (mm)</th>
+                        <th>Thickness (mm)</th>
+                        <th>Diameter of Bore (mm)</th>
+                        <th>No. of Holes</th>
+                        <th>Diameter of Bolt (mm)</th>
+                        <th>PCD (mm)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>15NB</td>
+                        <td>120.7</td>
+                        <td>22.4</td>
+                        <td>38.1*</td>
+                        <td>4</td>
+                        <td>22.2</td>
+                        <td>82.6</td>
+                      </tr>
+                      <tr>
+                        <td>20NB</td>
+                        <td>130.2</td>
+                        <td>25.4</td>
+                        <td>44.5*</td>
+                        <td>4</td>
+                        <td>22.2</td>
+                        <td>88.9</td>
+                      </tr>
+                      <tr>
+                        <td>25NB</td>
+                        <td>149.0</td>
+                        <td>28.6</td>
+                        <td>50.8*</td>
+                        <td>4</td>
+                        <td>25.4</td>
+                        <td>101.6</td>
+                      </tr>
+                      <tr>
+                        <td>32NB</td>
+                        <td>158.8</td>
+                        <td>28.6</td>
+                        <td>63.5*</td>
+                        <td>4</td>
+                        <td>25.4</td>
+                        <td>111.8</td>
+                      </tr>
+                      <tr>
+                        <td>40NB</td>
+                        <td>177.8</td>
+                        <td>31.8</td>
+                        <td>69.9*</td>
+                        <td>4</td>
+                        <td>28.6</td>
+                        <td>123.8</td>
+                      </tr>
+                      <tr>
+                        <td>50NB</td>
+                        <td>215.9</td>
+                        <td>38.1</td>
+                        <td>88.9*</td>
+                        <td>8</td>
+                        <td>25.4</td>
+                        <td>165.1</td>
+                      </tr>
+                      <tr>
+                        <td>65NB</td>
+                        <td>244.5</td>
+                        <td>41.3</td>
+                        <td>114.3*</td>
+                        <td>8</td>
+                        <td>28.6</td>
+                        <td>190.5</td>
+                      </tr>
+                      <tr>
+                        <td>80NB</td>
+                        <td>241.3</td>
+                        <td>38.1</td>
+                        <td>114.3*</td>
+                        <td>8</td>
+                        <td>25.4</td>
+                        <td>190.5</td>
+                      </tr>
+                      <tr>
+                        <td>100NB</td>
+                        <td>292.1</td>
+                        <td>44.5</td>
+                        <td>141.3*</td>
+                        <td>8</td>
+                        <td>31.8</td>
+                        <td>235.0</td>
+                      </tr>
+                      <tr>
+                        <td>125NB</td>
+                        <td>349.3</td>
+                        <td>50.8</td>
+                        <td>177.8*</td>
+                        <td>8</td>
+                        <td>34.9</td>
+                        <td>279.4</td>
+                      </tr>
+                      <tr>
+                        <td>150NB</td>
+                        <td>381.0</td>
+                        <td>50.8</td>
+                        <td>203.2*</td>
+                        <td>12</td>
+                        <td>31.8</td>
+                        <td>323.8</td>
+                      </tr>
+                      <tr>
+                        <td>200NB</td>
+                        <td>292.1†</td>
+                        <td>63.5</td>
+                        <td>260.3*</td>
+                        <td>12</td>
+                        <td>31.8</td>
+                        <td>371.8</td>
+                      </tr>
+                      <tr>
+                        <td>250NB</td>
+                        <td>317.5†</td>
+                        <td>69.8</td>
+                        <td>323.8*</td>
+                        <td>16</td>
+                        <td>34.9</td>
+                        <td>441.0</td>
+                      </tr>
+                      <tr>
+                        <td>300NB</td>
+                        <td>406.4</td>
+                        <td>76.2</td>
+                        <td>381.0*</td>
+                        <td>20</td>
+                        <td>35.6</td>
+                        <td>533.4</td>
+                      </tr>
+                      <tr>
+                        <td>350NB</td>
+                        <td>641.0</td>
+                        <td>86.0</td>
+                        <td>438.4*</td>
+                        <td>20</td>
+                        <td>38.1</td>
+                        <td>558.8</td>
+                      </tr>
+                      <tr>
+                        <td>400NB</td>
+                        <td>711.2</td>
+                        <td>88.9</td>
+                        <td>497.9*</td>
+                        <td>20</td>
+                        <td>41.3</td>
+                        <td>620.7</td>
+                      </tr>
+                      <tr>
+                        <td>450NB</td>
+                        <td>787.4</td>
+                        <td>101.6</td>
+                        <td>552.6*</td>
+                        <td>20</td>
+                        <td>47.6</td>
+                        <td>685.8</td>
+                      </tr>
+                      <tr>
+                        <td>500NB</td>
+                        <td>857.3</td>
+                        <td>107.9</td>
+                        <td>610.3*</td>
+                        <td>20</td>
+                        <td>47.6</td>
+                        <td>749.3</td>
+                      </tr>
+                      <tr>
+                        <td>600NB</td>
+                        <td>1041.4</td>
+                        <td>139.7</td>
+                        <td>711.2*</td>
+                        <td>20</td>
+                        <td>66.6</td>
+                        <td>901.7</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- ps tables 10 to 64 -->
+            <div class="dimension-item">
+              <div class="dimension-header">
+                <span>PN-10</span>
+                <span class="toggle-icon">▼</span>
+              </div>
+              <div class="dimension-content">
+                <div>
+                  <table
+                    class="table table-bordered table-striped"
+                    style="background: #fff"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Size (NB)</th>
+                        <th>OD of Flange (mm)</th>
+                        <th>Thickness (mm)</th>
+                        <th>No. of Holes</th>
+                        <th>Diameter of Bolt (mm)</th>
+                        <th>PCD (mm)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>15NB</td>
+                        <td>95</td>
+                        <td>14</td>
+                        <td>4</td>
+                        <td>12</td>
+                        <td>65</td>
+                      </tr>
+                      <tr>
+                        <td>20NB</td>
+                        <td>105</td>
+                        <td>14</td>
+                        <td>4</td>
+                        <td>12</td>
+                        <td>75</td>
+                      </tr>
+                      <tr>
+                        <td>25NB</td>
+                        <td>115</td>
+                        <td>14</td>
+                        <td>4</td>
+                        <td>12</td>
+                        <td>85</td>
+                      </tr>
+                      <tr>
+                        <td>32NB</td>
+                        <td>140</td>
+                        <td>16</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>100</td>
+                      </tr>
+                      <tr>
+                        <td>40NB</td>
+                        <td>150</td>
+                        <td>16</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>110</td>
+                      </tr>
+                      <tr>
+                        <td>50NB</td>
+                        <td>165</td>
+                        <td>18</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>125</td>
+                      </tr>
+                      <tr>
+                        <td>65NB</td>
+                        <td>185</td>
+                        <td>18</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>145</td>
+                      </tr>
+                      <tr>
+                        <td>80NB</td>
+                        <td>200</td>
+                        <td>18</td>
+                        <td>8</td>
+                        <td>16</td>
+                        <td>160</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="dimension-item">
+              <div class="dimension-header">
+                <span>PN-16</span>
+                <span class="toggle-icon">▼</span>
+              </div>
+              <div class="dimension-content">
+                <div>
+                  <table
+                    class="table table-bordered table-striped"
+                    style="background: #fff"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Size (NB)</th>
+                        <th>OD of Flange (mm)</th>
+                        <th>Thickness (mm)</th>
+                        <th>No. of Holes</th>
+                        <th>Diameter of Bolt (mm)</th>
+                        <th>PCD (mm)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>15NB</td>
+                        <td>95</td>
+                        <td>14</td>
+                        <td>4</td>
+                        <td>12</td>
+                        <td>65</td>
+                      </tr>
+                      <tr>
+                        <td>20NB</td>
+                        <td>105</td>
+                        <td>16</td>
+                        <td>4</td>
+                        <td>12</td>
+                        <td>75</td>
+                      </tr>
+                      <tr>
+                        <td>25NB</td>
+                        <td>115</td>
+                        <td>16</td>
+                        <td>4</td>
+                        <td>12</td>
+                        <td>85</td>
+                      </tr>
+                      <tr>
+                        <td>32NB</td>
+                        <td>140</td>
+                        <td>16</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>100</td>
+                      </tr>
+                      <tr>
+                        <td>40NB</td>
+                        <td>150</td>
+                        <td>16</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>110</td>
+                      </tr>
+                      <tr>
+                        <td>50NB</td>
+                        <td>165</td>
+                        <td>18</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>125</td>
+                      </tr>
+                      <tr>
+                        <td>65NB</td>
+                        <td>185</td>
+                        <td>18</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>145</td>
+                      </tr>
+                      <tr>
+                        <td>80NB</td>
+                        <td>200</td>
+                        <td>20</td>
+                        <td>8</td>
+                        <td>16</td>
+                        <td>160</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="dimension-item">
+              <div class="dimension-header">
+                <span>PN-40</span>
+                <span class="toggle-icon">▼</span>
+              </div>
+              <div class="dimension-content">
+                <div>
+                  <table
+                    class="table table-bordered table-striped"
+                    style="background: #fff"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Size (NB)</th>
+                        <th>OD of Flange (mm)</th>
+                        <th>Thickness (mm)</th>
+                        <th>No. of Holes</th>
+                        <th>Diameter of Bolt (mm)</th>
+                        <th>PCD (mm)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>15NB</td>
+                        <td>95</td>
+                        <td>18</td>
+                        <td>4</td>
+                        <td>12</td>
+                        <td>65</td>
+                      </tr>
+                      <tr>
+                        <td>20NB</td>
+                        <td>105</td>
+                        <td>20</td>
+                        <td>4</td>
+                        <td>12</td>
+                        <td>75</td>
+                      </tr>
+                      <tr>
+                        <td>25NB</td>
+                        <td>115</td>
+                        <td>20</td>
+                        <td>4</td>
+                        <td>12</td>
+                        <td>85</td>
+                      </tr>
+                      <tr>
+                        <td>32NB</td>
+                        <td>140</td>
+                        <td>22</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>100</td>
+                      </tr>
+                      <tr>
+                        <td>40NB</td>
+                        <td>150</td>
+                        <td>22</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>110</td>
+                      </tr>
+                      <tr>
+                        <td>50NB</td>
+                        <td>165</td>
+                        <td>24</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>125</td>
+                      </tr>
+                      <tr>
+                        <td>65NB</td>
+                        <td>185</td>
+                        <td>26</td>
+                        <td>8</td>
+                        <td>16</td>
+                        <td>145</td>
+                      </tr>
+                      <tr>
+                        <td>80NB</td>
+                        <td>200</td>
+                        <td>28</td>
+                        <td>8</td>
+                        <td>16</td>
+                        <td>160</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="dimension-item">
+              <div class="dimension-header">
+                <span>PN-64</span>
+                <span class="toggle-icon">▼</span>
+              </div>
+              <div class="dimension-content">
+                <div>
+                  <table
+                    class="table table-bordered table-striped"
+                    style="background: #fff"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Size (NB)</th>
+                        <th>OD of Flange (mm)</th>
+                        <th>Thickness (mm)</th>
+                        <th>No. of Holes</th>
+                        <th>Diameter of Bolt (mm)</th>
+                        <th>PCD (mm)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>15NB</td>
+                        <td>105</td>
+                        <td>24</td>
+                        <td>4</td>
+                        <td>12</td>
+                        <td>75</td>
+                      </tr>
+                      <tr>
+                        <td>20NB</td>
+                        <td>130</td>
+                        <td>30</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>90</td>
+                      </tr>
+                      <tr>
+                        <td>25NB</td>
+                        <td>140</td>
+                        <td>30</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>100</td>
+                      </tr>
+                      <tr>
+                        <td>32NB</td>
+                        <td>155</td>
+                        <td>40</td>
+                        <td>4</td>
+                        <td>20</td>
+                        <td>110</td>
+                      </tr>
+                      <tr>
+                        <td>40NB</td>
+                        <td>170</td>
+                        <td>44</td>
+                        <td>4</td>
+                        <td>20</td>
+                        <td>125</td>
+                      </tr>
+                      <tr>
+                        <td>50NB</td>
+                        <td>180</td>
+                        <td>50</td>
+                        <td>4</td>
+                        <td>20</td>
+                        <td>135</td>
+                      </tr>
+                      <tr>
+                        <td>65NB</td>
+                        <td>205</td>
+                        <td>60</td>
+                        <td>8</td>
+                        <td>20</td>
+                        <td>160</td>
+                      </tr>
+                      <tr>
+                        <td>80NB</td>
+                        <td>215</td>
+                        <td>75</td>
+                        <td>8</td>
+                        <td>20</td>
+                        <td>170</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <!-- d, e, f, h tables -->
+            <div class="dimension-item">
+              <div class="dimension-header">
+                <span>D table</span>
+                <span class="toggle-icon">▼</span>
+              </div>
+              <div class="dimension-content">
+                <div>
+                  <table
+                    class="table table-bordered table-striped"
+                    style="background: #fff"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Size (NB)</th>
+                        <th>OD of Flange (mm)</th>
+                        <th>Thickness (mm)</th>
+                        <th>No. of Holes</th>
+                        <th>Diameter of Bolt (mm)</th>
+                        <th>PCD (mm)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>15NB</td>
+                        <td>89</td>
+                        <td>11</td>
+                        <td>4</td>
+                        <td>11</td>
+                        <td>60</td>
+                      </tr>
+                      <tr>
+                        <td>20NB</td>
+                        <td>98</td>
+                        <td>11</td>
+                        <td>4</td>
+                        <td>11</td>
+                        <td>67</td>
+                      </tr>
+                      <tr>
+                        <td>25NB</td>
+                        <td>108</td>
+                        <td>11</td>
+                        <td>4</td>
+                        <td>11</td>
+                        <td>76</td>
+                      </tr>
+                      <tr>
+                        <td>32NB</td>
+                        <td>117</td>
+                        <td>13</td>
+                        <td>4</td>
+                        <td>14</td>
+                        <td>83</td>
+                      </tr>
+                      <tr>
+                        <td>40NB</td>
+                        <td>127</td>
+                        <td>13</td>
+                        <td>4</td>
+                        <td>14</td>
+                        <td>92</td>
+                      </tr>
+                      <tr>
+                        <td>50NB</td>
+                        <td>152</td>
+                        <td>13</td>
+                        <td>4</td>
+                        <td>14</td>
+                        <td>114</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="dimension-item">
+              <div class="dimension-header">
+                <span>E table</span>
+                <span class="toggle-icon">▼</span>
+              </div>
+              <div class="dimension-content">
+                <div>
+                  <table
+                    class="table table-bordered table-striped"
+                    style="background: #fff"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Size (NB)</th>
+                        <th>OD of Flange (mm)</th>
+                        <th>Thickness (mm)</th>
+                        <th>No. of Holes</th>
+                        <th>Diameter of Bolt (mm)</th>
+                        <th>PCD (mm)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>15NB</td>
+                        <td>95</td>
+                        <td>13</td>
+                        <td>4</td>
+                        <td>14</td>
+                        <td>65</td>
+                      </tr>
+                      <tr>
+                        <td>20NB</td>
+                        <td>102</td>
+                        <td>13</td>
+                        <td>4</td>
+                        <td>14</td>
+                        <td>73</td>
+                      </tr>
+                      <tr>
+                        <td>25NB</td>
+                        <td>114</td>
+                        <td>13</td>
+                        <td>4</td>
+                        <td>14</td>
+                        <td>83</td>
+                      </tr>
+                      <tr>
+                        <td>32NB</td>
+                        <td>127</td>
+                        <td>14</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>95</td>
+                      </tr>
+                      <tr>
+                        <td>40NB</td>
+                        <td>140</td>
+                        <td>14</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>105</td>
+                      </tr>
+                      <tr>
+                        <td>50NB</td>
+                        <td>165</td>
+                        <td>16</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>127</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="dimension-item">
+              <div class="dimension-header">
+                <span>F table</span>
+                <span class="toggle-icon">▼</span>
+              </div>
+              <div class="dimension-content">
+                <div>
+                  <table
+                    class="table table-bordered table-striped"
+                    style="background: #fff"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Size (NB)</th>
+                        <th>OD of Flange (mm)</th>
+                        <th>Thickness (mm)</th>
+                        <th>No. of Holes</th>
+                        <th>Diameter of Bolt (mm)</th>
+                        <th>PCD (mm)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>15NB</td>
+                        <td>102</td>
+                        <td>16</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>73</td>
+                      </tr>
+                      <tr>
+                        <td>20NB</td>
+                        <td>114</td>
+                        <td>16</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>83</td>
+                      </tr>
+                      <tr>
+                        <td>25NB</td>
+                        <td>127</td>
+                        <td>16</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>95</td>
+                      </tr>
+                      <tr>
+                        <td>32NB</td>
+                        <td>140</td>
+                        <td>18</td>
+                        <td>4</td>
+                        <td>18</td>
+                        <td>105</td>
+                      </tr>
+                      <tr>
+                        <td>40NB</td>
+                        <td>152</td>
+                        <td>18</td>
+                        <td>4</td>
+                        <td>18</td>
+                        <td>114</td>
+                      </tr>
+                      <tr>
+                        <td>50NB</td>
+                        <td>178</td>
+                        <td>20</td>
+                        <td>4</td>
+                        <td>18</td>
+                        <td>133</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+            <div class="dimension-item">
+              <div class="dimension-header">
+                <span>H table</span>
+                <span class="toggle-icon">▼</span>
+              </div>
+              <div class="dimension-content">
+                <div>
+                  <table
+                    class="table table-bordered table-striped"
+                    style="background: #fff"
+                  >
+                    <thead>
+                      <tr>
+                        <th>Size (NB)</th>
+                        <th>OD of Flange (mm)</th>
+                        <th>Thickness (mm)</th>
+                        <th>No. of Holes</th>
+                        <th>Diameter of Bolt (mm)</th>
+                        <th>PCD (mm)</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>15NB</td>
+                        <td>114</td>
+                        <td>18</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>83</td>
+                      </tr>
+                      <tr>
+                        <td>20NB</td>
+                        <td>127</td>
+                        <td>18</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>95</td>
+                      </tr>
+                      <tr>
+                        <td>25NB</td>
+                        <td>140</td>
+                        <td>18</td>
+                        <td>4</td>
+                        <td>16</td>
+                        <td>105</td>
+                      </tr>
+                      <tr>
+                        <td>32NB</td>
+                        <td>152</td>
+                        <td>20</td>
+                        <td>4</td>
+                        <td>18</td>
+                        <td>114</td>
+                      </tr>
+                      <tr>
+                        <td>40NB</td>
+                        <td>165</td>
+                        <td>20</td>
+                        <td>4</td>
+                        <td>18</td>
+                        <td>127</td>
+                      </tr>
+                      <tr>
+                        <td>50NB</td>
+                        <td>190</td>
+                        <td>22</td>
+                        <td>4</td>
+                        <td>18</td>
+                        <td>146</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Product Specifications Section
+      <section
+        class="section novi-background section-md text-center bg-gray-100"
+      >
+        <div class="container">
+          <h3 class="text-uppercase wow-outer">
+            <span class="wow slideInUp">Product Specifications</span>
+          </h3>
+          <p class="wow-outer">
+            <span class="text-width-1 wow slideInDown"
+              >Our MS flanges are manufactured to meet international standards
+              and specifications for quality and performance.</span
+            >
+          </p>
+          <div class="row row-50">
+            <div class="col-6 col-md-3 wow-outer">
+              <article
+                class="counter-minimal wow slideInUp"
+                data-wow-delay=".1s"
+              >
+                <div
+                  class="counter-minimal-icon box-chloe__icon novi-icon linearicons-cog"
+                ></div>
+                <div class="counter-minimal-main">
+                  <div class="counter">15</div>
+                </div>
+                <h5 class="counter-minimal-title">Standard Sizes</h5>
+              </article>
+            </div>
+            <div class="col-6 col-md-3 wow-outer">
+              Counter Minimal
+              <article
+                class="counter-minimal wow slideInUp"
+                data-wow-delay=".2s"
+              >
+                <div
+                  class="counter-minimal-icon box-chloe__icon novi-icon linearicons-star"
+                ></div>
+                <div class="counter-minimal-main">
+                  <div class="counter">100</div>
+                </div>
+                <h5 class="counter-minimal-title">Quality Assured</h5>
+              </article>
+            </div>
+            <div class="col-6 col-md-3 wow-outer">
+              <article
+                class="counter-minimal wow slideInUp"
+                data-wow-delay=".3s"
+              >
+                <div
+                  class="counter-minimal-icon box-chloe__icon novi-icon linearicons-truck"
+                ></div>
+                <div class="counter-minimal-main">
+                  <div class="counter">24</div>
+                </div>
+                <h5 class="counter-minimal-title">Hours Delivery</h5>
+              </article>
+            </div>
+            <div class="col-6 col-md-3 wow-outer">
+              <article
+                class="counter-minimal wow slideInUp"
+                data-wow-delay=".4s"
+              >
+                <div
+                  class="counter-minimal-icon box-chloe__icon novi-icon linearicons-shield-check"
+                ></div>
+                <div class="counter-minimal-main">
+                  <div class="counter">5</div>
+                </div>
+                <h5 class="counter-minimal-title">Years Warranty</h5>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section> -->
+
+      <!-- Call to Action Section -->
+      <!-- <section
+        class="section novi-background section-1 bg-primary-darker text-center"
+        style="background-image: url(images/bg-1-1920-455.jpg)"
+      >
+        <div class="container">
+          <div class="row justify-content-center">
+            <div class="col-sm-10 col-lg-7 col-xl-6">
+              <h3 class="wow-outer">
+                <span class="wow slideInDown text-uppercase text-white"
+                  >Ready to Order?</span
+                >
+              </h3>
+              <p class="heading-subtitle text-white">
+                Get Your Custom MS Flanges
+              </p>
+              <p class="wow-outer offset-top-4">
+                <span class="wow slideInDown text-white" data-wow-delay=".05s"
+                  >Contact us today for a free consultation and quote on your MS
+                  flange requirements. Our team is ready to help you find the
+                  perfect solution for your industrial needs.</span
+                >
+              </p>
+              <div class="wow-outer button-outer">
+                <a
+                  class="button button-primary-white button-winona wow slideInDown"
+                  href="contacts.html"
+                  data-wow-delay=".1s"
+                  >Contact Us Now</a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> -->
+
+      <!-- Page Footer-->
+      <footer class="section novi-background footer-advanced bg-gray-700">
+        <div class="footer-advanced-main">
+          <div class="container">
+            <div class="row row-50">
+              <div class="col-lg-4">
+                <h5 class="font-weight-bold text-uppercase text-white">
+                  About Us
+                </h5>
+                <p class="footer-advanced-text">
+                  Purusharth engineering is MS flanges manufacturer and MS
+                  flange supplier. We provides CNC finished and auto drilled MS
+                  flange.
+                </p>
+              </div>
+              <div class="col-sm-7 col-md-5 col-lg-4">
+                <h5 class="font-weight-bold text-uppercase text-white">
+                  Contact Us
+                </h5>
+                <article class="unit align-items-center mt-3">
+                  <div class="unit-left">
+                    <span
+                      class="icon novi-icon icon-md icon-modern mdi mdi-phone"
+                    ></span>
+                  </div>
+                  <div class="unit-body">
+                    <ul class="list-0">
+                      <li>
+                        <a class="link-default" href="tel:+919824123815"
+                          >+91-98241-23815</a
+                        >
+                      </li>
+                      <li>
+                        <a class="link-default" href="tel:+918866558695"
+                          >+91-88665-58695</a
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </article>
+                <article class="unit align-items-center mt-3">
+                  <div class="unit-left">
+                    <span
+                      class="icon novi-icon icon-md icon-modern mdi mdi-map-marker"
+                    ></span>
+                  </div>
+                  <div class="unit-body">
+                    <a class="link-default" href="#"
+                      >1/A, 14, NR. S.T workshop, Chitra GIDC,<br />
+                      Bhavnagar, Gujarat 364004</a
+                    >
+                  </div>
+                </article>
+              </div>
+              <div class="col-sm-5 col-md-7 col-lg-4">
+                <h5 class="font-weight-bold text-uppercase text-white">
+                  Gallery
+                </h5>
+                <div class="row row-x-10" data-lightgallery="group">
+                  <div class="col-3 col-sm-4 col-md-3">
+                    <a
+                      class="thumbnail-minimal"
+                      href="images/p1.JPG"
+                      data-lightgallery="item"
+                      ><img
+                        class="thumbnail-minimal-image"
+                        src="images/pf1.png"
+                        alt="" />
+                      <div class="thumbnail-minimal-caption"></div
+                    ></a>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-3">
+                    <a
+                      class="thumbnail-minimal"
+                      href="images/p2.png"
+                      data-lightgallery="item"
+                      ><img
+                        class="thumbnail-minimal-image"
+                        src="images/pf2.png"
+                        alt="" />
+                      <div class="thumbnail-minimal-caption"></div
+                    ></a>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-3">
+                    <a
+                      class="thumbnail-minimal"
+                      href="images/p3.jpg"
+                      data-lightgallery="item"
+                      ><img
+                        class="thumbnail-minimal-image"
+                        src="images/pf3.jpg"
+                        alt="" />
+                      <div class="thumbnail-minimal-caption"></div
+                    ></a>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-3">
+                    <a
+                      class="thumbnail-minimal"
+                      href="images/p4.jpg"
+                      data-lightgallery="item"
+                      ><img
+                        class="thumbnail-minimal-image"
+                        src="images/pf4.jpg"
+                        alt="" />
+                      <div class="thumbnail-minimal-caption"></div
+                    ></a>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-3">
+                    <a
+                      class="thumbnail-minimal"
+                      href="images/p5.JPG"
+                      data-lightgallery="item"
+                      ><img
+                        class="thumbnail-minimal-image"
+                        src="images/pf5.png"
+                        alt="" />
+                      <div class="thumbnail-minimal-caption"></div
+                    ></a>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-3">
+                    <a
+                      class="thumbnail-minimal"
+                      href="images/p6.JPG"
+                      data-lightgallery="item"
+                      ><img
+                        class="thumbnail-minimal-image"
+                        src="images/pf6.png"
+                        alt="" />
+                      <div class="thumbnail-minimal-caption"></div
+                    ></a>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-3">
+                    <a
+                      class="thumbnail-minimal"
+                      href="images/p7.png"
+                      data-lightgallery="item"
+                      ><img
+                        class="thumbnail-minimal-image"
+                        src="images/pf7.png"
+                        alt="" />
+                      <div class="thumbnail-minimal-caption"></div
+                    ></a>
+                  </div>
+                  <div class="col-3 col-sm-4 col-md-3">
+                    <a
+                      class="thumbnail-minimal"
+                      href="images/p8.png"
+                      data-lightgallery="item"
+                      ><img
+                        class="thumbnail-minimal-image"
+                        src="images/pf8.png"
+                        alt="" />
+                      <div class="thumbnail-minimal-caption"></div
+                    ></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="footer-advanced-aside">
+          <div class="container">
+            <div class="footer-advanced-layout">
+              <div>
+                <ul class="list-nav">
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="about-us.html">About</a></li>
+                  <li><a href="products.html">Products</a></li>
+                  <li><a href="contacts.html">Contacts</a></li>
+                </ul>
+              </div>
+              <div>
+                <ul class="foter-social-links list-inline list-inline-md">
+                  <li>
+                    <a
+                      class="icon novi-icon icon-sm link-default mdi mdi-facebook"
+                      href="#"
+                    ></a>
+                  </li>
+                  <li>
+                    <a
+                      class="icon novi-icon icon-sm link-default mdi mdi-twitter"
+                      href="#"
+                    ></a>
+                  </li>
+                  <li>
+                    <a
+                      class="icon novi-icon icon-sm link-default mdi mdi-instagram"
+                      href="#"
+                    ></a>
+                  </li>
+                  <li>
+                    <a
+                      class="icon novi-icon icon-sm link-default mdi mdi-linkedin"
+                      href="#"
+                    ></a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="container">
+          <hr />
+        </div>
+        <div
+          class="footer-advanced-aside"
+          style="margin-top: -19px; margin-bottom: -20px"
+        >
+          <div class="container">
+            <div class="footer-advanced-layout">
+              <a class="brand" href="index.html"
+                ><img
+                  src="images/logo.png"
+                  alt=""
+                  style="height: 160px"
+                  srcset="images/logo.png 2x"
+              /></a>
+              <!-- Rights-->
+              <p class="rights">
+                <span>&copy;&nbsp;</span><span class="copyright-year"></span>.
+                All Rights Reserved. Design by Purusharth technology
+              </p>
+            </div>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <!-- Global Mailform Output-->
+    <div class="snackbars" id="form-output-global"></div>
+    <!-- Javascript-->
+    <script src="js/core.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+      document.querySelectorAll(".dimension-header").forEach((header) => {
+        header.addEventListener("click", function () {
+          const item = this.parentElement;
+          const icon = this.querySelector(".toggle-icon");
+          // Close all other open tables
+          document
+            .querySelectorAll(".dimension-item.active")
+            .forEach((openItem) => {
+              if (openItem !== item) {
+                openItem.classList.remove("active");
+                const openIcon = openItem.querySelector(".toggle-icon");
+                if (openIcon) openIcon.textContent = "▼";
+              }
+            });
+          // Toggle the clicked one
+          item.classList.toggle("active");
+          icon.textContent = item.classList.contains("active") ? "▲" : "▼";
+        });
+      });
+
+      // Make all tables responsive
+      document.addEventListener("DOMContentLoaded", function () {
+        const dimensionContents =
+          document.querySelectorAll(".dimension-content");
+        dimensionContents.forEach((content) => {
+          const tables = content.querySelectorAll("table");
+          tables.forEach((table) => {
+            // Check if table is already wrapped in table-responsive
+            if (!table.parentElement.classList.contains("table-responsive")) {
+              const wrapper = document.createElement("div");
+              wrapper.className = "table-responsive";
+              table.parentNode.insertBefore(wrapper, table);
+              wrapper.appendChild(table);
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
