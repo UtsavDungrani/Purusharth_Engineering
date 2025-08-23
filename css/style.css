@@ -10034,6 +10034,7 @@ html.tablet .ui-to-top {
 .rd-navbar-fixed .rd-navbar-brand img {
 	max-width: 160px;
 	max-height: 115px;
+	margin-top: 20px;
 	width: auto;
 	height: auto;
 }
@@ -10385,6 +10386,7 @@ html.tablet .ui-to-top {
 }
 
 .rd-navbar-fixed .rd-navbar-panel {
+	height: 75px;
 	color: #495057;
 	box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.05);
 	background: #fff;
