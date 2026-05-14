@@ -1,0 +1,740 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>3D Flange Designer | Purusharth Engineering</title>
+    <meta
+      name="description"
+      content="Use the Purusharth Engineering 3D Flange Designer tool to visualize and customize MS flanges. The best MS flange manufacturer in Bhavnagar, Gujarat."
+    />
+    <meta
+      name="keywords"
+      content="3D flange designer, virtual flange tool, custom MS flanges, MS flange manufacturer in bhavnagar"
+    />
+    <link
+      rel="canonical"
+      href="https://purusharth-engineering.com/Flange%203d.html"
+    />
+    <meta property="og:type" content="website" />
+    <meta
+      property="og:url"
+      content="https://purusharth-engineering.com/Flange%203d.html"
+    />
+    <meta
+      property="og:title"
+      content="3D Flange Designer | Purusharth Engineering"
+    />
+    <meta
+      property="og:description"
+      content="Visualize and customize MS flanges with Purusharth Engineering's interactive 3D Flange Designer tool."
+    />
+    <meta
+      property="og:image"
+      content="https://purusharth-engineering.com/images/logo.webp"
+    />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:title"
+      content="3D Flange Designer | Purusharth Engineering"
+    />
+    <meta
+      property="twitter:description"
+      content="Interactive 3D Flange Designer to visualize and customize MS flanges."
+    />
+    <meta name="author" content="Purusharth Engineering" />
+    <meta name="robots" content="index, follow" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        overflow: hidden;
+        color: white;
+      }
+
+      #app {
+        width: 100vw;
+        height: 100vh;
+        position: relative;
+      }
+
+      #canvas-container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+
+      #ui-panel {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+        padding: 25px;
+        min-width: 280px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .panel-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #fff;
+        text-align: center;
+      }
+
+      .control-group {
+        margin-bottom: 20px;
+      }
+
+      .control-label {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: #ccc;
+      }
+
+      .control-value {
+        font-weight: 600;
+        color: #fff;
+        background: rgba(255, 255, 255, 0.1);
+        padding: 2px 8px;
+        border-radius: 4px;
+        min-width: 40px;
+        text-align: center;
+      }
+
+      .slider {
+        width: 100%;
+        height: 6px;
+        border-radius: 3px;
+        background: rgba(255, 255, 255, 0.2);
+        outline: none;
+        -webkit-appearance: none;
+      }
+
+      .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #667eea;
+        cursor: pointer;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      .slider::-moz-range-thumb {
+        width: 18px;
+        height: 18px;
+        border-radius: 50%;
+        background: #667eea;
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      }
+
+      .color-picker {
+        width: 100%;
+        height: 40px;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        background: none;
+      }
+
+      .color-picker::-webkit-color-swatch-wrapper {
+        padding: 0;
+      }
+
+      .color-picker::-webkit-color-swatch {
+        border: none;
+        border-radius: 8px;
+      }
+
+      #info-panel {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        background: rgba(0, 0, 0, 0.8);
+        backdrop-filter: blur(10px);
+        border-radius: 10px;
+        padding: 15px;
+        font-size: 13px;
+        color: #ccc;
+        max-width: 300px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      #loading {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 18px;
+        color: white;
+        background: rgba(0, 0, 0, 0.8);
+        padding: 20px 40px;
+        border-radius: 10px;
+        backdrop-filter: blur(10px);
+      }
+
+      .error {
+        color: #ff6b6b;
+        background: rgba(255, 107, 107, 0.1);
+        border: 1px solid rgba(255, 107, 107, 0.3);
+      }
+
+      .success {
+        color: #51cf66;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div id="canvas-container">
+        <div id="loading">Loading 3D Flange Designer...</div>
+      </div>
+
+      <div id="ui-panel" style="display: none">
+        <div class="panel-title">Flange Designer</div>
+
+        <div class="control-group">
+          <div class="control-label">
+            <span>Outer Diameter</span>
+            <span class="control-value" id="outerDiameterValue">40mm</span>
+          </div>
+          <input
+            type="range"
+            class="slider"
+            id="outerDiameter"
+            min="20"
+            max="100"
+            value="40"
+            step="1"
+          />
+        </div>
+
+        <div class="control-group">
+          <div class="control-label">
+            <span>Inner Diameter</span>
+            <span class="control-value" id="innerDiameterValue">20mm</span>
+          </div>
+          <input
+            type="range"
+            class="slider"
+            id="innerDiameter"
+            min="5"
+            max="50"
+            value="20"
+            step="1"
+          />
+        </div>
+
+        <div class="control-group">
+          <div class="control-label">
+            <span>Thickness</span>
+            <span class="control-value" id="thicknessValue">5mm</span>
+          </div>
+          <input
+            type="range"
+            class="slider"
+            id="thickness"
+            min="2"
+            max="20"
+            value="5"
+            step="0.5"
+          />
+        </div>
+
+        <div class="control-group">
+          <div class="control-label">
+            <span>Bolt Holes</span>
+            <span class="control-value" id="boltHolesValue">6</span>
+          </div>
+          <input
+            type="range"
+            class="slider"
+            id="boltHoles"
+            min="3"
+            max="12"
+            value="6"
+            step="1"
+          />
+        </div>
+
+        <div class="control-group">
+          <div class="control-label">
+            <span>PCD (Bolt Circle Diameter)</span>
+            <span class="control-value" id="boltCircleDiameterValue">30mm</span>
+          </div>
+          <input
+            type="range"
+            class="slider"
+            id="boltCircleDiameter"
+            min="10"
+            max="100"
+            value="30"
+            step="1"
+          />
+        </div>
+
+        <div class="control-group">
+          <div class="control-label">
+            <span>Bolt Hole Size</span>
+            <span class="control-value" id="boltHoleSizeValue">4mm</span>
+          </div>
+          <input
+            type="range"
+            class="slider"
+            id="boltHoleSize"
+            min="2"
+            max="10"
+            value="4"
+            step="0.5"
+          />
+        </div>
+
+        <div class="control-group">
+          <div class="control-label">
+            <span>Material Color</span>
+          </div>
+          <input
+            type="color"
+            class="color-picker"
+            id="materialColor"
+            value="#888888"
+          />
+        </div>
+      </div>
+
+      <!-- <div id="info-panel">
+        <strong>3D Flange Designer</strong><br />
+        â€¢ Drag to rotate â€¢ Scroll to zoom â€¢ Real-time updates<br />
+        â€¢ Professional flange design with accurate bolt holes
+      </div> -->
+    </div>
+
+    <script>
+      // Load Three.js with fallback
+      function loadThreeJS() {
+        return new Promise((resolve, reject) => {
+          const script = document.createElement("script");
+          script.src = "https://unpkg.com/three@0.158.0/build/three.min.js";
+          script.onload = () => resolve();
+          script.onerror = () => {
+            // Fallback to CDNJS
+            const fallbackScript = document.createElement("script");
+            fallbackScript.src =
+              "https://cdnjs.cloudflare.com/ajax/libs/three.js/r158/three.min.js";
+            fallbackScript.onload = () => resolve();
+            fallbackScript.onerror = () =>
+              reject(new Error("Failed to load Three.js from all sources"));
+            document.head.appendChild(fallbackScript);
+          };
+          document.head.appendChild(script);
+        });
+      }
+    </script>
+    <script>
+      class FlangeDesigner {
+        constructor() {
+          this.scene = null;
+          this.camera = null;
+          this.renderer = null;
+          this.flangeGroup = null;
+          this.controls = null;
+
+          this.params = {
+            outerDiameter: 40,
+            innerDiameter: 20,
+            thickness: 5,
+            boltHoles: 6,
+            boltCircleDiameter: 30,
+            boltHoleSize: 4,
+            materialColor: 0x888888,
+          };
+
+          this.mouse = {
+            isDown: false,
+            lastX: 0,
+            lastY: 0,
+          };
+
+          this.rotation = {
+            x: 0,
+            y: 0,
+            targetX: 0,
+            targetY: 0,
+          };
+
+          this.init();
+        }
+
+        init() {
+          try {
+            this.checkDependencies();
+            this.setupScene();
+            this.setupCamera();
+            this.setupRenderer();
+            this.setupLighting();
+            this.setupControls();
+            this.setupEventListeners();
+            this.createFlange();
+            this.animate();
+            this.showUI();
+          } catch (error) {
+            this.showError(error.message);
+          }
+        }
+
+        checkDependencies() {
+          if (typeof THREE === "undefined") {
+            throw new Error("Three.js library failed to load");
+          }
+          if (!window.WebGLRenderingContext) {
+            throw new Error("WebGL is not supported in this browser");
+          }
+        }
+
+        setupScene() {
+          this.scene = new THREE.Scene();
+          this.scene.background = new THREE.Color(0x1a1a2e);
+        }
+
+        setupCamera() {
+          const aspect = window.innerWidth / window.innerHeight;
+          this.camera = new THREE.PerspectiveCamera(60, aspect, 0.1, 1000);
+          this.camera.position.set(50, 30, 50);
+          this.camera.lookAt(0, 0, 0);
+        }
+
+        setupRenderer() {
+          this.renderer = new THREE.WebGLRenderer({
+            antialias: true,
+            alpha: true,
+          });
+          this.renderer.setSize(window.innerWidth, window.innerHeight);
+          this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+          this.renderer.shadowMap.enabled = true;
+          this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+          this.renderer.outputEncoding = THREE.sRGBEncoding;
+          this.renderer.toneMapping = THREE.ACESFilmicToneMapping;
+          this.renderer.toneMappingExposure = 1.2;
+
+          const container = document.getElementById("canvas-container");
+          container.appendChild(this.renderer.domElement);
+        }
+
+        setupLighting() {
+          // Ambient light
+          const ambientLight = new THREE.AmbientLight(0x404040, 0.4);
+          this.scene.add(ambientLight);
+
+          // Main directional light
+          const mainLight = new THREE.DirectionalLight(0xffffff, 0.8);
+          mainLight.position.set(50, 50, 50);
+          mainLight.castShadow = true;
+          mainLight.shadow.mapSize.width = 2048;
+          mainLight.shadow.mapSize.height = 2048;
+          mainLight.shadow.camera.near = 0.5;
+          mainLight.shadow.camera.far = 500;
+          mainLight.shadow.camera.left = -100;
+          mainLight.shadow.camera.right = 100;
+          mainLight.shadow.camera.top = 100;
+          mainLight.shadow.camera.bottom = -100;
+          this.scene.add(mainLight);
+
+          // Fill light
+          const fillLight = new THREE.DirectionalLight(0x4488ff, 0.3);
+          fillLight.position.set(-30, 30, 30);
+          this.scene.add(fillLight);
+
+          // Rim light
+          const rimLight = new THREE.DirectionalLight(0xff8844, 0.2);
+          rimLight.position.set(0, -30, -30);
+          this.scene.add(rimLight);
+        }
+
+        createFlangeGeometry() {
+          const outerRadius = this.params.outerDiameter / 2;
+          const innerRadius = this.params.innerDiameter / 2;
+          const thickness = this.params.thickness;
+          const seamOffset = Math.PI / 256; // offset to move UV/vertex seam
+
+          // Create the main flange shape
+          const shape = new THREE.Shape();
+          shape.absarc(
+            0,
+            0,
+            outerRadius,
+            seamOffset,
+            seamOffset + Math.PI * 2,
+            false,
+          );
+          shape.autoClose = true;
+
+          // Create inner hole
+          const innerHole = new THREE.Path();
+          innerHole.absarc(
+            0,
+            0,
+            innerRadius,
+            seamOffset,
+            seamOffset + Math.PI * 2,
+            true,
+          );
+          innerHole.autoClose = true;
+          shape.holes.push(innerHole);
+
+          // Create bolt hole paths
+          const boltHoleRadius = this.params.boltHoleSize / 2;
+          // Desired bolt circle radius from PCD, clamped to remain within the ring
+          const desiredBoltCircleRadius = this.params.boltCircleDiameter / 2;
+          const minBoltCircleRadius = innerRadius + boltHoleRadius + 0.1;
+          const maxBoltCircleRadius = outerRadius - boltHoleRadius - 0.1;
+          const boltCircleRadius = Math.min(
+            Math.max(desiredBoltCircleRadius, minBoltCircleRadius),
+            maxBoltCircleRadius,
+          );
+
+          for (let i = 0; i < this.params.boltHoles; i++) {
+            const angle = (i / this.params.boltHoles) * Math.PI * 2;
+            const x = Math.cos(angle) * boltCircleRadius;
+            const y = Math.sin(angle) * boltCircleRadius;
+
+            const boltHole = new THREE.Path();
+            boltHole.absarc(
+              x,
+              y,
+              boltHoleRadius,
+              seamOffset,
+              seamOffset + Math.PI * 2,
+              true,
+            );
+            boltHole.autoClose = true;
+            shape.holes.push(boltHole);
+          }
+
+          // Extrude settings
+          const extrudeSettings = {
+            depth: thickness,
+            bevelEnabled: false,
+            bevelThickness: 0,
+            bevelSize: 0,
+            bevelOffset: 0,
+            bevelSegments: 0,
+            curveSegments: 256,
+          };
+
+          const geometry = new THREE.ExtrudeGeometry(shape, extrudeSettings);
+          geometry.translate(0, 0, -thickness / 2);
+          geometry.computeVertexNormals();
+
+          return geometry;
+        }
+
+        createFlange() {
+          if (this.flangeGroup) {
+            this.scene.remove(this.flangeGroup);
+          }
+
+          this.flangeGroup = new THREE.Group();
+
+          // Create main flange body
+          const geometry = this.createFlangeGeometry();
+          const material = new THREE.MeshStandardMaterial({
+            color: this.params.materialColor,
+            metalness: 0.45,
+            roughness: 0.5,
+            envMapIntensity: 0.35,
+          });
+
+          const flangeMesh = new THREE.Mesh(geometry, material);
+          flangeMesh.castShadow = true;
+          flangeMesh.receiveShadow = true;
+          this.flangeGroup.add(flangeMesh);
+
+          this.scene.add(this.flangeGroup);
+        }
+
+        setupControls() {
+          const controls = {
+            outerDiameter: document.getElementById("outerDiameter"),
+            innerDiameter: document.getElementById("innerDiameter"),
+            thickness: document.getElementById("thickness"),
+            boltHoles: document.getElementById("boltHoles"),
+            boltCircleDiameter: document.getElementById("boltCircleDiameter"),
+            boltHoleSize: document.getElementById("boltHoleSize"),
+            materialColor: document.getElementById("materialColor"),
+          };
+
+          const valueDisplays = {
+            outerDiameter: document.getElementById("outerDiameterValue"),
+            innerDiameter: document.getElementById("innerDiameterValue"),
+            thickness: document.getElementById("thicknessValue"),
+            boltHoles: document.getElementById("boltHolesValue"),
+            boltCircleDiameter: document.getElementById(
+              "boltCircleDiameterValue",
+            ),
+            boltHoleSize: document.getElementById("boltHoleSizeValue"),
+          };
+
+          // Add event listeners with debouncing
+          let updateTimeout;
+          const debouncedUpdate = () => {
+            clearTimeout(updateTimeout);
+            updateTimeout = setTimeout(() => this.createFlange(), 100);
+          };
+
+          Object.keys(controls).forEach((key) => {
+            const control = controls[key];
+            if (!control) return;
+
+            control.addEventListener("input", (e) => {
+              if (key === "materialColor") {
+                this.params[key] = parseInt(e.target.value.replace("#", "0x"));
+              } else {
+                this.params[key] = parseFloat(e.target.value);
+              }
+
+              if (valueDisplays[key]) {
+                const value = e.target.value;
+                valueDisplays[key].textContent =
+                  key.includes("Diameter") ||
+                  key.includes("Size") ||
+                  key.includes("thickness")
+                    ? `${value}mm`
+                    : value;
+              }
+
+              debouncedUpdate();
+            });
+          });
+        }
+
+        setupEventListeners() {
+          const canvas = this.renderer.domElement;
+
+          // Mouse controls
+          canvas.addEventListener("mousedown", (e) => {
+            this.mouse.isDown = true;
+            this.mouse.lastX = e.clientX;
+            this.mouse.lastY = e.clientY;
+          });
+
+          canvas.addEventListener("mousemove", (e) => {
+            if (!this.mouse.isDown) return;
+
+            const deltaX = e.clientX - this.mouse.lastX;
+            const deltaY = e.clientY - this.mouse.lastY;
+
+            this.rotation.targetY += deltaX * 0.01;
+            this.rotation.targetX += deltaY * 0.01;
+
+            this.mouse.lastX = e.clientX;
+            this.mouse.lastY = e.clientY;
+          });
+
+          canvas.addEventListener("mouseup", () => {
+            this.mouse.isDown = false;
+          });
+
+          canvas.addEventListener("wheel", (e) => {
+            e.preventDefault();
+            const zoomFactor = e.deltaY > 0 ? 1.1 : 0.9;
+            this.camera.position.multiplyScalar(zoomFactor);
+            this.camera.position.clampLength(20, 200);
+          });
+
+          // Touch controls
+          canvas.addEventListener("touchstart", (e) => {
+            e.preventDefault();
+            if (e.touches.length === 1) {
+              this.mouse.isDown = true;
+              this.mouse.lastX = e.touches[0].clientX;
+              this.mouse.lastY = e.touches[0].clientY;
+            }
+          });
+
+          canvas.addEventListener("touchmove", (e) => {
+            e.preventDefault();
+            if (this.mouse.isDown && e.touches.length === 1) {
+              const deltaX = e.touches[0].clientX - this.mouse.lastX;
+              const deltaY = e.touches[0].clientY - this.mouse.lastY;
+
+              this.rotation.targetY += deltaX * 0.01;
+              this.rotation.targetX += deltaY * 0.01;
+
+              this.mouse.lastX = e.touches[0].clientX;
+              this.mouse.lastY = e.touches[0].clientY;
+            }
+          });
+
+          canvas.addEventListener("touchend", (e) => {
+            e.preventDefault();
+            this.mouse.isDown = false;
+          });
+
+          // Window resize
+          window.addEventListener("resize", () => {
+            this.camera.aspect = window.innerWidth / window.innerHeight;
+            this.camera.updateProjectionMatrix();
+            this.renderer.setSize(window.innerWidth, window.innerHeight);
+          });
+        }
+
+        animate() {
+          requestAnimationFrame(() => this.animate());
+
+          // Smooth rotation
+          if (this.flangeGroup) {
+            this.rotation.x += (this.rotation.targetX - this.rotation.x) * 0.1;
+            this.rotation.y += (this.rotation.targetY - this.rotation.y) * 0.1;
+
+            this.flangeGroup.rotation.x = this.rotation.x;
+            this.flangeGroup.rotation.y = this.rotation.y;
+          }
+
+          this.renderer.render(this.scene, this.camera);
+        }
+
+        showUI() {
+          document.getElementById("loading").style.display = "none";
+          document.getElementById("ui-panel").style.display = "block";
+        }
+
+        showError(message) {
+          const loading = document.getElementById("loading");
+          loading.textContent = `Error: ${message}`;
+          loading.className = "error";
+        }
+      }
+
+      // Initialize the application
+      window.addEventListener("load", async () => {
+        try {
+          await loadThreeJS();
+          new FlangeDesigner();
+        } catch (error) {
+          console.error("Failed to initialize:", error);
+          const loading = document.getElementById("loading");
+          if (loading) {
+            loading.textContent = `Error: ${error.message}`;
+            loading.className = "error";
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+Disallow: /bat/
+Disallow: *.pdf
+
+Sitemap: https://purusharth-engineering.com/sitemap.xml
+
+# Allow major search engines
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# Crawl delay to prevent server overload
+Crawl-delay: 1
+Request-rate: 1/1s
